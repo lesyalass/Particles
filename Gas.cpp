@@ -1,6 +1,7 @@
 #include "TXLib.h"
 #include <cstdlib>
 #include <cmath>
+#include <iostream>
 
 struct Vector
 {
@@ -98,6 +99,7 @@ int main()
     txCreateWindow(screenSizeX, screenSizeY);
     txSetColor(RGB(0, 0, 0));
 
+
     while(true)
     {
         for (int i = 0; i < 100; i++)
@@ -107,13 +109,15 @@ int main()
 
 
         for (int i = 0; i < 100; i++)
+
         {
             txBegin();
-            drawSphere(particles[i]);
+            drawSphere(&particles[i]);
             txEnd();
-            txClear();
+            cout « “Object coords “ « &particles[i].X « “ “ « &particles[i].Y;
         }
 
+        txClear();
         for (int i = 0; i < 100; i++)
         {
             collisionSphereWall(&particles[i], screenSizeX, screenSizeY);
